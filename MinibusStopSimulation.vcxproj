@@ -143,7 +143,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Minibus.cpp" />
     <ClCompile Include="Passenger.cpp" />
-    <ClCompile Include="Queue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BusStop.h" />
