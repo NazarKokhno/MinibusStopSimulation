@@ -1,26 +1,26 @@
 #include "Passenger.h"
 #include <iostream>
-#include <cmath>
+#include <stdexcept>
 
 using namespace std;
 
-Passenger::Passenger(double ArrivalTime, double BoardingTime)
-    : ArrivalTime(ArrivalTime), BoardingTime(BoardingTime)
+Passenger::Passenger(double arrivalTime, double boardingTime)
+    : ArrivalTime(arrivalTime), BoardingTime(boardingTime)
 {
     if (ArrivalTime < 0)
-    {
-        this->ArrivalTime = abs(ArrivalTime);
-    }
+        throw std::invalid_argument("Passenger arrival time cannot be negative");
 
     if (BoardingTime < 0)
-    {
-        this->BoardingTime = abs(BoardingTime);
-    }
+        throw std::invalid_argument("Passenger boarding time cannot be negative");
 }
 
-void Passenger::Show()
+double Passenger::GetArrivalTime() const
 {
-    cout << "Arrival time: " << ArrivalTime << endl;
-    cout << "Boarding time: " << BoardingTime << endl;
+    return ArrivalTime;
+}
+
+double Passenger::GetBoardingTime() const
+{
+    return BoardingTime;
 }
 

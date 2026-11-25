@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 
 class Passenger
 {
@@ -8,7 +7,10 @@ private:
     double BoardingTime;
 
 public:
-    Passenger(double ArrivalTime, double BoardingTime);
+    Passenger(double arrivalTime, double boardingTime);
 
-    void Show();
+    double GetArrivalTime() const;
+    double GetBoardingTime() const;
+
+    
 };
