@@ -1,6 +1,11 @@
 ﻿#include <iostream>
+#include "Passenger.h"
+
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Passenger p(12.5, 32);
+	p.Show();
+
 }
