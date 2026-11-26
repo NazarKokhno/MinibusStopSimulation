@@ -25,7 +25,6 @@ public:
         double avg_bus_headway, bool isterminal);
     ~BusStop();
     
-    
     void AddPassenger(double arrivalTime);
     
     double* GetPassengerArrivalTimes() const
@@ -38,4 +37,11 @@ public:
     void ArriveMinibus(double arrivialTime);
   
     double CalculateAverageWaitingTime() const;
+    
+    void RunSimulation(double simulationDuration);
+
+    int GetPassengerCount() const;
+    int GetBoardingCount() const;
+    int GetMinibusCount() const;
+    
 };

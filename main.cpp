@@ -12,16 +12,16 @@ int main()
 {
     try
     {
-        BusStop stop(5.0, 15.0, false);
-       
-        stop.AddPassenger(2);
-        stop.AddPassenger(5);
-        stop.AddPassenger(7);
+        BusStop stop(5, 10, false);
 
-        Minibus minibus(3, 10);
-        stop.BoardPassengers(minibus);
+        stop.RunSimulation(30);
 
-        cout << stop.CalculateAverageWaitingTime() << endl;
+        cout << "Passengers: " << stop.GetPassengerCount() << endl;
+        cout << "Boarded: " << stop.GetBoardingCount() << endl;
+        cout << "Minibuses: " << stop.GetMinibusCount() << endl;
+
+        cout << "Average waiting time: "
+            << stop.CalculateAverageWaitingTime() << endl;
 
     }
     catch (const exception& error)

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <cstdlib>
+#include <algorithm>
 #include <ctime>
 #include "Queue.h"
 #include "Passenger.h"
@@ -118,4 +119,49 @@ double BusStop::CalculateAverageWaitingTime() const
     }
 
     return sum / BoardingCount;
+}
+
+void BusStop::RunSimulation(double simulationDuration)
+{
+    double currentTime = 0;
+    double nextPassengerArrival = avg_interarrival_time;
+    double nextMinibusArrival = avg_bus_headway;
+
+    while (min(nextPassengerArrival, nextMinibusArrival) <= simulationDuration)
+    {
+        if (nextPassengerArrival > nextMinibusArrival)
+        {
+            if (nextMinibusArrival > simulationDuration)
+                break;
+            
+            currentTime = nextMinibusArrival;
+            ArriveMinibus(currentTime);
+            
+            nextMinibusArrival += avg_bus_headway;
+        }
+        else
+        {
+            if (nextPassengerArrival > simulationDuration)
+                break;
+            currentTime = nextPassengerArrival;
+            AddPassenger(currentTime);
+
+            nextPassengerArrival += avg_interarrival_time;
+        }
+    }
+}
+
+int BusStop::GetPassengerCount() const
+{
+    return PassengerCount;
+}
+
+int BusStop::GetBoardingCount() const
+{
+    return BoardingCount;
+}
+
+int BusStop::GetMinibusCount() const
+{
+    return MinibusCount;
 }
