@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="MinibusStopSimulation.vcxproj" />
+  <Project Path="MinibusStopSimulation.vcxproj" Id="c8f3b844-4a4b-46b6-b684-1f3ec7317926" />
 </Solution>

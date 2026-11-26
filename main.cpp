@@ -2,33 +2,24 @@
 #include "Passenger.h"
 #include "Queue.h"
 #include "Minibus.h"
+#include "BusStop.h"
 
 
 using namespace std;
 
 int main()
 {
-    try
-    {
-        Passenger passenger(5.5, 12.5);
-        Minibus bus(8, 15.0);
+    
+        BusStop stop(5.0, 15.0, false);
 
-        cout << "Passenger created successfully!" << endl;
-        cout << "Arrival time: " << passenger.GetArrivalTime() << endl;
-        cout << "Boarding time: " << passenger.GetBoardingTime() << endl;
+        stop.AddPassenger(2.5);
+        stop.AddPassenger(7.0);
+        stop.AddPassenger(12.5);
 
-        cout << "\nMinibus created successfully!" << endl;
-        cout << "Free seats: " << bus.GetFreeSeats() << endl;
-        cout << "Arrival time: " << bus.GetArrivalTime() << endl;
-    }
-    catch (const invalid_argument& e)
-    {
-        cout << "Input error: " << e.what() << endl;
-    }
-    catch (const exception& e)
-    {
-        cout << "Error: " << e.what() << endl;
-    }
+        for (int i = 0; i < 3; i++)
+        {
+            cout << stop.GetPassengerArrivalTimes()[i] << '\n';
+        }
 
     return 0;
 }

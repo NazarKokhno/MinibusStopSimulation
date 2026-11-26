@@ -1,6 +1,7 @@
 #include <stdexcept>
 #include "Minibus.h"
 
+
 Minibus::Minibus(int freeSeats, double arrivalTime)
 	: FreeSeats(freeSeats), ArrivalTime(arrivalTime)
 {

@@ -4,13 +4,13 @@ class Passenger
 {
 private:
     double ArrivalTime;
-    double BoardingTime;
+    double BoardingTime = -1;
 
 public:
-    Passenger(double arrivalTime, double boardingTime);
-
+    Passenger();
+    Passenger(double arrivalTime);
     double GetArrivalTime() const;
     double GetBoardingTime() const;
 
-    
+    void SetBoardingTime(double time);
 };
