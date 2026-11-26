@@ -23,15 +23,12 @@ private:
 public:
     BusStop(double avg_interarrival_time,
         double avg_bus_headway, bool isterminal);
+    BusStop& operator=(const BusStop&) = delete;
+    BusStop(const BusStop&) = delete;
     ~BusStop();
     
     void AddPassenger(double arrivalTime);
     
-    double* GetPassengerArrivalTimes() const
-    {
-        return PassengerArrivalTimes;
-    }
-
     void BoardPassengers(Minibus& minibus);
 
     void ArriveMinibus(double arrivialTime);
@@ -43,5 +40,7 @@ public:
     int GetPassengerCount() const;
     int GetBoardingCount() const;
     int GetMinibusCount() const;
+
+    void DisplayStatistics() const;
     
 };

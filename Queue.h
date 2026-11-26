@@ -2,7 +2,6 @@
 #include <stdexcept>
 #include <iostream>
 
-using namespace std;
 
 template <typename T>
 class Queue
@@ -154,12 +153,4 @@ template <typename T>
 void Queue<T>::clear()
 {
     Count = 0;
-}
-template <typename T>
-void Queue<T>::show()
-{
-    for (int i = 0; i < Count; i++)
-    {
-        std::cout << Elements[i].GetArrivalTime() << " ";
-    }
 }

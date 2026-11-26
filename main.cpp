@@ -1,28 +1,23 @@
 ﻿#include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include <exception>
 #include "Passenger.h"
 #include "Queue.h"
 #include "Minibus.h"
 #include "BusStop.h"
 
-
 using namespace std;
 
 int main()
 {
+    srand(time(0));
+
     try
     {
-        BusStop stop(5, 10, false);
-
-        stop.RunSimulation(30);
-
-        cout << "Passengers: " << stop.GetPassengerCount() << endl;
-        cout << "Boarded: " << stop.GetBoardingCount() << endl;
-        cout << "Minibuses: " << stop.GetMinibusCount() << endl;
-
-        cout << "Average waiting time: "
-            << stop.CalculateAverageWaitingTime() << endl;
-
+        BusStop stop(1, 11, false);
+        stop.RunSimulation(120);
+        stop.DisplayStatistics();
     }
     catch (const exception& error)
     {

@@ -8,6 +8,8 @@
 #include "BusStop.h"
 #include "Minibus.h"
 
+
+
 BusStop::BusStop(double avg_interarrival_time,
     double avg_bus_headway, bool isterminal)
     : avg_interarrival_time(avg_interarrival_time),
@@ -84,7 +86,7 @@ void BusStop::BoardPassengers(Minibus& minibus)
 
 void BusStop::ArriveMinibus(double arrivalTime)
 {
-    int freeSeats = rand() % 17;
+    int freeSeats = std::rand() % 17;
 
     Minibus minibus(freeSeats,arrivalTime);
     double* newArray = new double[MinibusCount + 1];
@@ -102,7 +104,10 @@ void BusStop::ArriveMinibus(double arrivalTime)
 
     MinibusCount++;
 
-    BoardPassengers(minibus);
+    if (!isTerminal)
+    {
+        BoardPassengers(minibus);
+    }
 }
 
 double BusStop::CalculateAverageWaitingTime() const
@@ -127,7 +132,7 @@ void BusStop::RunSimulation(double simulationDuration)
     double nextPassengerArrival = avg_interarrival_time;
     double nextMinibusArrival = avg_bus_headway;
 
-    while (min(nextPassengerArrival, nextMinibusArrival) <= simulationDuration)
+    while (std::min(nextPassengerArrival, nextMinibusArrival) <= simulationDuration)
     {
         if (nextPassengerArrival > nextMinibusArrival)
         {
@@ -164,4 +169,21 @@ int BusStop::GetBoardingCount() const
 int BusStop::GetMinibusCount() const
 {
     return MinibusCount;
+}
+
+void BusStop::DisplayStatistics() const
+{
+    std::cout << "Passengers: " << PassengerCount << std::endl;
+    std::cout << "Boarded: " << BoardingCount << std::endl;
+    std::cout << "Waiting: " << PassengerCount - BoardingCount << std::endl;
+    std::cout << "Minibuses: " << MinibusCount << std::endl;
+    try
+    {
+        std::cout << "Average waiting time: "
+            << CalculateAverageWaitingTime() << std::endl;
+    }
+    catch (const std::runtime_error& error)
+    {
+        std::cout << error.what() << std::endl;
+    }
 }
