@@ -50,6 +50,37 @@ void BusStop::AddPassenger(double arrivalTime)
 
     PassengerCount++;
 }
+
+void BusStop::BoardPassengers(Minibus& minibus)
+{
+    while (!Passengers.empty() && minibus.GetFreeSeats() > 0)
+    {
+        double* newArray = new double[BoardingCount + 1];
+
+        for (int i = 0; i < BoardingCount; i++)
+        {
+            newArray[i] = PassengerBoardingTimes[i];
+        }
+
+        Passenger& passenger = Passengers.front();
+        passenger.SetBoardingTime(minibus.GetArrivalTime());
+        double BoardingTime = passenger.GetBoardingTime();
+
+        newArray[BoardingCount] = BoardingTime;
+
+        Passengers.pop();
+
+        delete[] PassengerBoardingTimes;
+
+        PassengerBoardingTimes = newArray;
+
+        BoardingCount++;
+
+        minibus.UseSeat();
+    }
+    
+}
+
 void BusStop::ArriveMinibus(double arrivalTime)
 {
     int freeSeats = rand() % 17;
@@ -69,6 +100,8 @@ void BusStop::ArriveMinibus(double arrivalTime)
     MinibusArrivalTimes = newArray;
 
     MinibusCount++;
+
+    BoardPassengers(minibus);
 }
 
 

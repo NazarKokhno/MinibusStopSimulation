@@ -20,4 +20,11 @@ double Minibus::GetArrivalTime() const
 	return arrivalTime;
 }
 
+void Minibus::UseSeat()
+{
+	if (freeSeats > 0)
+		freeSeats--;
+}
+
+
 

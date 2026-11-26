@@ -10,4 +10,6 @@ public:
 
 	int GetFreeSeats() const;
 	double GetArrivalTime() const;
+
+	void UseSeat();
 };

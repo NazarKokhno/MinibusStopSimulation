@@ -14,11 +14,11 @@ int main()
     {
         BusStop stop(5.0, 15.0, false);
 
-        stop.AddPassenger(2.5);
-        stop.AddPassenger(7.0);
-        stop.AddPassenger(12.5);
+        stop.AddPassenger(2);
+        stop.AddPassenger(1);
+        stop.AddPassenger(3);
 
-        stop.ArriveMinibus(12);
+        stop.ArriveMinibus(13);
         stop.ArriveMinibus(10);
         stop.ArriveMinibus(7);
 

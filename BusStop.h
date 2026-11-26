@@ -1,6 +1,8 @@
 #pragma once
 #include "Queue.h"
 #include "Passenger.h"
+#include "Minibus.h"
+
 
 class BusStop
 {
@@ -31,7 +33,7 @@ public:
         return PassengerArrivalTimes;
     }
 
-
+    void BoardPassengers(Minibus& minibus);
 
     void ArriveMinibus(double arrivialTime);
   
