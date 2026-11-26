@@ -3,20 +3,21 @@
 
 
 Minibus::Minibus(int freeSeats, double arrivalTime)
-	: FreeSeats(freeSeats), ArrivalTime(arrivalTime)
+	: freeSeats(freeSeats), arrivalTime(arrivalTime)
 {
-	if (FreeSeats < 0)
+	if (freeSeats < 0)
 		throw std::invalid_argument("Minibus free seats cannot be negative");
 
-	if (ArrivalTime < 0)
+	if (arrivalTime < 0)
 		throw std::invalid_argument("Minibus arrival time cannot be negative");
 }
 int  Minibus::GetFreeSeats() const
 {
-	return FreeSeats;
+	return freeSeats;
 }
 double Minibus::GetArrivalTime() const
 {
-	return ArrivalTime;
+	return arrivalTime;
 }
+
 

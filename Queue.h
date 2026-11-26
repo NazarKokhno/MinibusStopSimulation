@@ -1,5 +1,8 @@
 #pragma once
 #include <stdexcept>
+#include <iostream>
+
+using namespace std;
 
 template <typename T>
 class Queue
@@ -27,8 +30,9 @@ public:
 
     int size() const;
     void clear();
-};
 
+    void show();
+};
 
 template <typename T>
 Queue<T>::Queue(int size)
@@ -41,13 +45,11 @@ Queue<T>::Queue(int size)
     Count = 0;
 }
 
-
 template <typename T>
 Queue<T>::~Queue()
 {
     delete[] Elements;
 }
-
 
 template <typename T>
 Queue<T>::Queue(const Queue& other)
@@ -62,7 +64,6 @@ Queue<T>::Queue(const Queue& other)
         Elements[i] = other.Elements[i];
     }
 }
-
 
 template <typename T>
 Queue<T>& Queue<T>::operator=(const Queue& other)
@@ -86,20 +87,17 @@ Queue<T>& Queue<T>::operator=(const Queue& other)
     return *this;
 }
 
-
 template <typename T>
 bool Queue<T>::empty() const
 {
     return Count == 0;
 }
 
-
 template <typename T>
 bool Queue<T>::full() const 
 {
     return Count == MaxSize;
 }
-
 
 template <typename T>
 void Queue<T>::push(const T& value)
@@ -109,7 +107,6 @@ void Queue<T>::push(const T& value)
 
     Elements[Count++] = value;
 }
-
 
 template <typename T>
 T Queue<T>::pop()
@@ -129,7 +126,6 @@ T Queue<T>::pop()
     return temp;
 }
 
-
 template <typename T>
 T& Queue<T>::front()
 {
@@ -139,7 +135,6 @@ T& Queue<T>::front()
     return Elements[0];
 }
 
-
 template <typename T>
 T& Queue<T>::back()
 {
@@ -148,7 +143,6 @@ T& Queue<T>::back()
 
     return Elements[Count - 1];
 }
-
 
 template <typename T>
 int Queue<T>::size() const
@@ -160,4 +154,12 @@ template <typename T>
 void Queue<T>::clear()
 {
     Count = 0;
+}
+template <typename T>
+void Queue<T>::show()
+{
+    for (int i = 0; i < Count; i++)
+    {
+        std::cout << Elements[i].GetArrivalTime() << " ";
+    }
 }

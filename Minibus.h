@@ -3,10 +3,10 @@
 class Minibus
 {
 private:
-	int FreeSeats;
-	double ArrivalTime;
+	int freeSeats;
+	double arrivalTime;
 public:
-	Minibus(int freeSeats, double arrivalTime);
+	Minibus(int freeSeats,double arrivalTime);
 
 	int GetFreeSeats() const;
 	double GetArrivalTime() const;

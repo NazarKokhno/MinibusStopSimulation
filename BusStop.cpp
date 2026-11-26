@@ -1,9 +1,11 @@
 #include <iostream>
 #include <stdexcept>
+#include <cstdlib>
+#include <ctime>
 #include "Queue.h"
 #include "Passenger.h"
 #include "BusStop.h"
-
+#include "Minibus.h"
 
 BusStop::BusStop(double avg_interarrival_time,
     double avg_bus_headway, bool isterminal)
@@ -24,6 +26,7 @@ BusStop::~BusStop()
     delete[] MinibusArrivalTimes;
 
 }
+
 void BusStop::AddPassenger(double arrivalTime)
 {
     Passenger passenger(arrivalTime);
@@ -41,5 +44,31 @@ void BusStop::AddPassenger(double arrivalTime)
     delete[] PassengerArrivalTimes;
     PassengerArrivalTimes = newArray;
 
+  /*  cout << "\nShow queue \n----------" << endl;
+    Passengers.show();
+    cout << "\n----------" << endl;*/
+
     PassengerCount++;
 }
+void BusStop::ArriveMinibus(double arrivalTime)
+{
+    int freeSeats = rand() % 17;
+
+    Minibus minibus(freeSeats,arrivalTime);
+    double* newArray = new double[MinibusCount + 1];
+
+    for (int i = 0; i < MinibusCount; i++)
+    {
+        newArray[i] = MinibusArrivalTimes[i];
+    }
+
+    newArray[MinibusCount] = arrivalTime;
+
+    delete[] MinibusArrivalTimes;
+    
+    MinibusArrivalTimes = newArray;
+
+    MinibusCount++;
+}
+
+

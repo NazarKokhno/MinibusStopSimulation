@@ -21,6 +21,7 @@ private:
 public:
     BusStop(double avg_interarrival_time,
         double avg_bus_headway, bool isterminal);
+    ~BusStop();
     
     
     void AddPassenger(double arrivalTime);
@@ -30,4 +31,8 @@ public:
         return PassengerArrivalTimes;
     }
 
+
+
+    void ArriveMinibus(double arrivialTime);
+  
 };

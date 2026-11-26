@@ -3,8 +3,8 @@
 class Passenger
 {
 private:
-    double ArrivalTime;
-    double BoardingTime = -1;
+    double arrivalTime;
+    double boardingTime = -1;
 
 public:
     Passenger();
