@@ -37,4 +37,5 @@ public:
 
     void ArriveMinibus(double arrivialTime);
   
+    double CalculateAverageWaitingTime() const;
 };

@@ -13,19 +13,16 @@ int main()
     try
     {
         BusStop stop(5.0, 15.0, false);
-
+       
         stop.AddPassenger(2);
-        stop.AddPassenger(1);
-        stop.AddPassenger(3);
+        stop.AddPassenger(5);
+        stop.AddPassenger(7);
 
-        stop.ArriveMinibus(13);
-        stop.ArriveMinibus(10);
-        stop.ArriveMinibus(7);
+        Minibus minibus(3, 10);
+        stop.BoardPassengers(minibus);
 
-       for (int i = 0; i < 3; i++)
-       {
-            cout << stop.GetPassengerArrivalTimes()[i] << '\n';
-       }
+        cout << stop.CalculateAverageWaitingTime() << endl;
+
     }
     catch (const exception& error)
     {

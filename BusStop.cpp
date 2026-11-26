@@ -104,4 +104,18 @@ void BusStop::ArriveMinibus(double arrivalTime)
     BoardPassengers(minibus);
 }
 
+double BusStop::CalculateAverageWaitingTime() const
+{
+    
+    if (BoardingCount <= 0)
+        throw std::runtime_error("Cannot calculate average waiting time: no passengers boarded");
+    
+    double sum = 0;
 
+    for (int i = 0; i < BoardingCount; i++)
+    {
+        sum += PassengerBoardingTimes[i] - PassengerArrivalTimes[i];
+    }
+
+    return sum / BoardingCount;
+}
